@@ -1,13 +1,11 @@
-package me.nathanfallet.streamdeck.events.keyDown
+package me.nathanfallet.streamdeck.events.didReceiveSettings
 
 import kotlinx.serialization.Serializable
 import me.nathanfallet.streamdeck.models.payloads.Coordinates
 
 @Serializable
-data class KeyDownPayload(
+data class DidReceiveSettingsPayload(
     val settings: Map<String, String>,
     val coordinates: Coordinates,
-    val state: Int?,
-    val userDesiredState: Int?,
     val isInMultiAction: Boolean,
 )

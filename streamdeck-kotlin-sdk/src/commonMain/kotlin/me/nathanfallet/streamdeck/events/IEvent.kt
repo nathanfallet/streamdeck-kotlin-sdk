@@ -1,3 +1,7 @@
 package me.nathanfallet.streamdeck.events
 
-interface IEvent
+interface IEvent {
+
+    val event: String
+
+}

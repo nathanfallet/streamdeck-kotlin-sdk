@@ -1,13 +1,12 @@
-package me.nathanfallet.streamdeck.events.keyDown
+package me.nathanfallet.streamdeck.events.propertyInspectorDidAppear
 
 import kotlinx.serialization.Serializable
 import me.nathanfallet.streamdeck.events.IEvent
 
 @Serializable
-data class KeyDownEvent(
+data class PropertyInspectorDidAppearEvent(
     val action: String,
     override val event: String,
     val context: String,
     val device: String,
-    val payload: KeyDownPayload,
 ) : IEvent

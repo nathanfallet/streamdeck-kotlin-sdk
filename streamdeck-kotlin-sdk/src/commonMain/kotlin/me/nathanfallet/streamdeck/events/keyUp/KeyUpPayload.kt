@@ -1,10 +1,10 @@
-package me.nathanfallet.streamdeck.events.keyDown
+package me.nathanfallet.streamdeck.events.keyUp
 
 import kotlinx.serialization.Serializable
 import me.nathanfallet.streamdeck.models.payloads.Coordinates
 
 @Serializable
-data class KeyDownPayload(
+data class KeyUpPayload(
     val settings: Map<String, String>,
     val coordinates: Coordinates,
     val state: Int?,

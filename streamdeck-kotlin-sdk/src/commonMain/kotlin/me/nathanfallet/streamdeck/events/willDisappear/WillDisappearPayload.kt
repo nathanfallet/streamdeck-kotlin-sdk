@@ -1,13 +1,13 @@
-package me.nathanfallet.streamdeck.events.keyDown
+package me.nathanfallet.streamdeck.events.willDisappear
 
 import kotlinx.serialization.Serializable
 import me.nathanfallet.streamdeck.models.payloads.Coordinates
 
 @Serializable
-data class KeyDownPayload(
+data class WillDisappearPayload(
     val settings: Map<String, String>,
     val coordinates: Coordinates,
+    val controller: String,
     val state: Int?,
-    val userDesiredState: Int?,
     val isInMultiAction: Boolean,
 )

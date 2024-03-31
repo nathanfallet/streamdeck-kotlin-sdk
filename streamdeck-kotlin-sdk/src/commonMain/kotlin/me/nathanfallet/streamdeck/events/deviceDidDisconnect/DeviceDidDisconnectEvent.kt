@@ -1,13 +1,10 @@
-package me.nathanfallet.streamdeck.events.keyDown
+package me.nathanfallet.streamdeck.events.deviceDidDisconnect
 
 import kotlinx.serialization.Serializable
 import me.nathanfallet.streamdeck.events.IEvent
 
 @Serializable
-data class KeyDownEvent(
-    val action: String,
+data class DeviceDidDisconnectEvent(
     override val event: String,
-    val context: String,
     val device: String,
-    val payload: KeyDownPayload,
 ) : IEvent

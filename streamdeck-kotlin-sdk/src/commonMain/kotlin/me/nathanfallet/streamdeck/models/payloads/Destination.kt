@@ -1,4 +1,4 @@
-package me.nathanfallet.streamdeck.models
+package me.nathanfallet.streamdeck.models.payloads
 
 enum class Destination {
 

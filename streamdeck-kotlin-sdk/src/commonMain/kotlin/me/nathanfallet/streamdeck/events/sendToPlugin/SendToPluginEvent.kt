@@ -1,13 +1,12 @@
-package me.nathanfallet.streamdeck.events.keyDown
+package me.nathanfallet.streamdeck.events.sendToPlugin
 
 import kotlinx.serialization.Serializable
 import me.nathanfallet.streamdeck.events.IEvent
 
 @Serializable
-data class KeyDownEvent(
+data class SendToPluginEvent(
     val action: String,
     override val event: String,
     val context: String,
-    val device: String,
-    val payload: KeyDownPayload,
+    val payload: Map<String, String>,
 ) : IEvent

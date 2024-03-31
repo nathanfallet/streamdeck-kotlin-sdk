@@ -5,7 +5,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.int
 import kotlinx.coroutines.runBlocking
-import me.nathanfallet.streamdeck.models.StreamDeckJson
+import me.nathanfallet.streamdeck.models.json.StreamDeckJson
 import me.nathanfallet.streamdeck.usecases.IHandleEventUseCase
 
 class PluginBuilder(

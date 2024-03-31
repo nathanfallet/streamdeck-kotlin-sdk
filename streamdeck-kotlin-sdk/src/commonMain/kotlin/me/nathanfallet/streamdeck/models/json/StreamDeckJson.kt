@@ -1,4 +1,4 @@
-package me.nathanfallet.streamdeck.models
+package me.nathanfallet.streamdeck.models.json
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json

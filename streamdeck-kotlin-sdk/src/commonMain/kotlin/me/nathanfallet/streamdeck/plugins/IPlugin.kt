@@ -1,7 +1,7 @@
 package me.nathanfallet.streamdeck.plugins
 
-import me.nathanfallet.streamdeck.models.Destination
 import me.nathanfallet.streamdeck.models.info.Info
+import me.nathanfallet.streamdeck.models.payloads.Destination
 
 interface IPlugin {
 
