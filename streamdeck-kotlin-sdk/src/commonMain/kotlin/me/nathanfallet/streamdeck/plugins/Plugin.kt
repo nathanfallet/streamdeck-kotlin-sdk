@@ -111,7 +111,11 @@ abstract class Plugin : CliktCommand(), IPlugin {
         val data = StreamDeckJson.json.decodeFromString(type, payload)
 
         for (usecase in usecases) {
-            usecase(data, this)
+            try {
+                usecase(data, this)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
