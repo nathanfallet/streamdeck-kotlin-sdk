@@ -21,15 +21,30 @@ import me.nathanfallet.streamdeck.events.deviceDidDisconnect.DeviceDidDisconnect
 import me.nathanfallet.streamdeck.events.didReceiveDeepLink.DidReceiveDeepLinkEvent
 import me.nathanfallet.streamdeck.events.didReceiveGlobalSettings.DidReceiveGlobalSettingsEvent
 import me.nathanfallet.streamdeck.events.didReceiveSettings.DidReceiveSettingsEvent
+import me.nathanfallet.streamdeck.events.getGlobalSettings.GetGlobalSettingsEvent
+import me.nathanfallet.streamdeck.events.getSettings.GetSettingsEvent
 import me.nathanfallet.streamdeck.events.keyDown.KeyDownEvent
 import me.nathanfallet.streamdeck.events.keyUp.KeyUpEvent
+import me.nathanfallet.streamdeck.events.logMessage.LogMessageEvent
+import me.nathanfallet.streamdeck.events.logMessage.LogMessagePayload
 import me.nathanfallet.streamdeck.events.openUrl.OpenUrlEvent
 import me.nathanfallet.streamdeck.events.openUrl.OpenUrlPayload
 import me.nathanfallet.streamdeck.events.propertyInspectorDidAppear.PropertyInspectorDidAppearEvent
 import me.nathanfallet.streamdeck.events.propertyInspectorDidDisappear.PropertyInspectorDidDisappearEvent
 import me.nathanfallet.streamdeck.events.sendToPlugin.SendToPluginEvent
+import me.nathanfallet.streamdeck.events.sendToPropertyInspector.SendToPropertyInspectorEvent
+import me.nathanfallet.streamdeck.events.setGlobalSettings.SetGlobalSettingsEvent
+import me.nathanfallet.streamdeck.events.setImage.SetImageEvent
+import me.nathanfallet.streamdeck.events.setImage.SetImagePayload
+import me.nathanfallet.streamdeck.events.setSettings.SetSettingsEvent
+import me.nathanfallet.streamdeck.events.setState.SetStateEvent
+import me.nathanfallet.streamdeck.events.setState.SetStatePayload
 import me.nathanfallet.streamdeck.events.setTitle.SetTitleEvent
 import me.nathanfallet.streamdeck.events.setTitle.SetTitlePayload
+import me.nathanfallet.streamdeck.events.showAlert.ShowAlertEvent
+import me.nathanfallet.streamdeck.events.showOk.ShowOkEvent
+import me.nathanfallet.streamdeck.events.switchToProfile.SwitchToProfileEvent
+import me.nathanfallet.streamdeck.events.switchToProfile.SwitchToProfilePayload
 import me.nathanfallet.streamdeck.events.systemDidWakeUp.SystemDidWakeUpEvent
 import me.nathanfallet.streamdeck.events.titleParametersDidChange.TitleParametersDidChangeEvent
 import me.nathanfallet.streamdeck.events.willAppear.WillAppearEvent
@@ -129,10 +144,47 @@ abstract class Plugin : CliktCommand(), IPlugin {
 
     override fun registerUseCase(usecase: IHandleEventUseCase) = usecases.add(usecase)
 
+    override suspend fun setSettings(context: String, settings: Map<String, String>) = sendPayload(
+        SetSettingsEvent(
+            "setSettings",
+            context,
+            settings
+        )
+    )
+
+    override suspend fun getSettings(context: String) = sendPayload(
+        GetSettingsEvent(
+            "getSettings",
+            context
+        )
+    )
+
+    override suspend fun setGlobalSettings(settings: Map<String, String>) = sendPayload(
+        SetGlobalSettingsEvent(
+            "setGlobalSettings",
+            pluginUUID,
+            settings
+        )
+    )
+
+    override suspend fun getGlobalSettings() = sendPayload(
+        GetGlobalSettingsEvent(
+            "getGlobalSettings",
+            pluginUUID
+        )
+    )
+
     override suspend fun openUrl(url: String) = sendPayload(
         OpenUrlEvent(
             "openUrl",
             OpenUrlPayload(url)
+        )
+    )
+
+    override suspend fun logMessage(message: String) = sendPayload(
+        LogMessageEvent(
+            "logMessage",
+            LogMessagePayload(message)
         )
     )
 
@@ -143,5 +195,54 @@ abstract class Plugin : CliktCommand(), IPlugin {
             SetTitlePayload(title, destination.ordinal, null)
         )
     )
+
+    override suspend fun setImage(context: String, image: String, destination: Destination) = sendPayload(
+        SetImageEvent(
+            "setImage",
+            context,
+            SetImagePayload(image, destination.ordinal, null)
+        )
+    )
+
+    override suspend fun showAlert(context: String) = sendPayload(
+        ShowAlertEvent(
+            "setImage",
+            context
+        )
+    )
+
+    override suspend fun showOk(context: String) = sendPayload(
+        ShowOkEvent(
+            "showOk",
+            context
+        )
+    )
+
+    override suspend fun setState(context: String, state: Int) = sendPayload(
+        SetStateEvent(
+            "setState",
+            context,
+            SetStatePayload(state)
+        )
+    )
+
+    override suspend fun switchToProfile(device: String, profile: String, page: Int) = sendPayload(
+        SwitchToProfileEvent(
+            "switchToProfile",
+            pluginUUID,
+            device,
+            SwitchToProfilePayload(profile, page)
+        )
+    )
+
+    override suspend fun sendToPropertyInspector(action: String, context: String, payload: Map<String, String>) =
+        sendPayload(
+            SendToPropertyInspectorEvent(
+                action,
+                "sendToPropertyInspector",
+                context,
+                payload
+            )
+        )
 
 }
