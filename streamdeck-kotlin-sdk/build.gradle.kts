@@ -19,7 +19,7 @@ kotlin {
     macosX64()
     macosArm64()
     linuxX64()
-    mingwX64()
+    //mingwX64() // Not supported by CIO?
     jvm {
         jvmToolchain(19)
         withJava()
