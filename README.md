@@ -13,7 +13,7 @@ A Kotlin SDK to create Stream Deck plugins.
 Add dependency to your `build.gradle(.kts)` or `pom.xml`:
 
 ```kotlin
-api("me.nathanfallet.streamdeck:streamdeck-kotlin-sdk:1.0.0")
+api("me.nathanfallet.streamdeck:streamdeck-kotlin-sdk:1.1.0")
 ```
 
 ```xml
@@ -21,7 +21,7 @@ api("me.nathanfallet.streamdeck:streamdeck-kotlin-sdk:1.0.0")
 <dependency>
     <groupId>me.nathanfallet.streamdeck</groupId>
     <artifactId>streamdeck-kotlin-sdk-jvm</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
