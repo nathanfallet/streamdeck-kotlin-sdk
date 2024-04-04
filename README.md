@@ -14,11 +14,11 @@ Add the gradle plugin and the dependency to your `build.gradle(.kts)`:
 
 ```kotlin
 plugins {
-    id("me.nathanfallet.streamdeck") version "1.1.0"
+    id("me.nathanfallet.streamdeck") version "1.1.1"
 }
 
 dependencies {
-    implementation("me.nathanfallet.streamdeck:streamdeck-kotlin-sdk:1.1.0")
+    implementation("me.nathanfallet.streamdeck:streamdeck-kotlin-sdk:1.1.1")
 }
 ```
 

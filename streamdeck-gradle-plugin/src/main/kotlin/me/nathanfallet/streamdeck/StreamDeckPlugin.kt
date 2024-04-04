@@ -32,17 +32,11 @@ abstract class StreamDeckPlugin : Plugin<Project> {
 
         project.tasks.register<Copy>("buildStreamDeckPlugin") {
             group = buildGroup
-            dependsOn("jar")
-            dependsOn("startScripts")
+            dependsOn("installDist")
 
-            into("build/${extension.pluginId.get()}.sdPlugin")
+            into(project.layout.buildDirectory.dir("${extension.pluginId.get()}.sdPlugin"))
 
-            from(project.tasks.named("jar")) {
-                into("lib")
-            }
-            from(project.tasks.named("startScripts")) {
-                into("bin")
-            }
+            from(project.tasks.named("installDist"))
             from("src/main/resources")
         }
     }
