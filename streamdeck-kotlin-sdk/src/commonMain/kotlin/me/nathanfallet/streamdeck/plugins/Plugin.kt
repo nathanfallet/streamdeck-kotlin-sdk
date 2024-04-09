@@ -18,6 +18,9 @@ import me.nathanfallet.streamdeck.events.applicationDidLaunch.ApplicationDidLaun
 import me.nathanfallet.streamdeck.events.applicationDidTerminate.ApplicationDidTerminateEvent
 import me.nathanfallet.streamdeck.events.deviceDidConnect.DeviceDidConnectEvent
 import me.nathanfallet.streamdeck.events.deviceDidDisconnect.DeviceDidDisconnectEvent
+import me.nathanfallet.streamdeck.events.dialDown.DialDownEvent
+import me.nathanfallet.streamdeck.events.dialRotate.DialRotateEvent
+import me.nathanfallet.streamdeck.events.dialUp.DialUpEvent
 import me.nathanfallet.streamdeck.events.didReceiveDeepLink.DidReceiveDeepLinkEvent
 import me.nathanfallet.streamdeck.events.didReceiveGlobalSettings.DidReceiveGlobalSettingsEvent
 import me.nathanfallet.streamdeck.events.didReceiveSettings.DidReceiveSettingsEvent
@@ -47,6 +50,7 @@ import me.nathanfallet.streamdeck.events.switchToProfile.SwitchToProfileEvent
 import me.nathanfallet.streamdeck.events.switchToProfile.SwitchToProfilePayload
 import me.nathanfallet.streamdeck.events.systemDidWakeUp.SystemDidWakeUpEvent
 import me.nathanfallet.streamdeck.events.titleParametersDidChange.TitleParametersDidChangeEvent
+import me.nathanfallet.streamdeck.events.touchTap.TouchTapEvent
 import me.nathanfallet.streamdeck.events.willAppear.WillAppearEvent
 import me.nathanfallet.streamdeck.events.willDisappear.WillDisappearEvent
 import me.nathanfallet.streamdeck.models.RegisterPlugin
@@ -108,6 +112,10 @@ abstract class Plugin : CliktCommand(), IPlugin {
             "didReceiveSettings" -> DidReceiveSettingsEvent.serializer()
             "didReceiveGlobalSettings" -> DidReceiveGlobalSettingsEvent.serializer()
             "didReceiveDeepLink" -> DidReceiveDeepLinkEvent.serializer()
+            "touchTap" -> TouchTapEvent.serializer()
+            "dialDown" -> DialDownEvent.serializer()
+            "dialUp" -> DialUpEvent.serializer()
+            "dialRotate" -> DialRotateEvent.serializer()
             "keyDown" -> KeyDownEvent.serializer()
             "keyUp" -> KeyUpEvent.serializer()
             "willAppear" -> WillAppearEvent.serializer()
