@@ -36,6 +36,9 @@ import me.nathanfallet.streamdeck.events.propertyInspectorDidAppear.PropertyInsp
 import me.nathanfallet.streamdeck.events.propertyInspectorDidDisappear.PropertyInspectorDidDisappearEvent
 import me.nathanfallet.streamdeck.events.sendToPlugin.SendToPluginEvent
 import me.nathanfallet.streamdeck.events.sendToPropertyInspector.SendToPropertyInspectorEvent
+import me.nathanfallet.streamdeck.events.setFeedback.SetFeedbackEvent
+import me.nathanfallet.streamdeck.events.setFeedbackLayout.SetFeedbackLayoutEvent
+import me.nathanfallet.streamdeck.events.setFeedbackLayout.SetFeedbackLayoutPayload
 import me.nathanfallet.streamdeck.events.setGlobalSettings.SetGlobalSettingsEvent
 import me.nathanfallet.streamdeck.events.setImage.SetImageEvent
 import me.nathanfallet.streamdeck.events.setImage.SetImagePayload
@@ -44,6 +47,8 @@ import me.nathanfallet.streamdeck.events.setState.SetStateEvent
 import me.nathanfallet.streamdeck.events.setState.SetStatePayload
 import me.nathanfallet.streamdeck.events.setTitle.SetTitleEvent
 import me.nathanfallet.streamdeck.events.setTitle.SetTitlePayload
+import me.nathanfallet.streamdeck.events.setTriggerDescription.SetTriggerDescriptionEvent
+import me.nathanfallet.streamdeck.events.setTriggerDescription.SetTriggerDescriptionPayload
 import me.nathanfallet.streamdeck.events.showAlert.ShowAlertEvent
 import me.nathanfallet.streamdeck.events.showOk.ShowOkEvent
 import me.nathanfallet.streamdeck.events.switchToProfile.SwitchToProfileEvent
@@ -248,6 +253,31 @@ abstract class Plugin : CliktCommand(), IPlugin {
             SendToPropertyInspectorEvent(
                 action,
                 "sendToPropertyInspector",
+                context,
+                payload
+            )
+        )
+
+    override suspend fun setFeedback(context: String, payload: Map<String, String>) = sendPayload(
+        SetFeedbackEvent(
+            "setFeedback",
+            context,
+            payload
+        )
+    )
+
+    override suspend fun setFeedbackLayout(context: String, layout: String) = sendPayload(
+        SetFeedbackLayoutEvent(
+            "setFeedbackLayout",
+            context,
+            SetFeedbackLayoutPayload(layout)
+        )
+    )
+
+    override suspend fun setTriggerDescription(context: String, payload: SetTriggerDescriptionPayload) =
+        sendPayload(
+            SetTriggerDescriptionEvent(
+                "setTriggerDescription",
                 context,
                 payload
             )

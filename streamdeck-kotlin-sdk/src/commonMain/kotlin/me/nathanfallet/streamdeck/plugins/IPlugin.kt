@@ -1,5 +1,6 @@
 package me.nathanfallet.streamdeck.plugins
 
+import me.nathanfallet.streamdeck.events.setTriggerDescription.SetTriggerDescriptionPayload
 import me.nathanfallet.streamdeck.models.info.Info
 import me.nathanfallet.streamdeck.models.payloads.Destination
 import me.nathanfallet.streamdeck.usecases.IHandleEventUseCase
@@ -24,5 +25,8 @@ interface IPlugin {
     suspend fun setState(context: String, state: Int)
     suspend fun switchToProfile(device: String, profile: String, page: Int)
     suspend fun sendToPropertyInspector(action: String, context: String, payload: Map<String, String>)
+    suspend fun setFeedback(context: String, payload: Map<String, String>)
+    suspend fun setFeedbackLayout(context: String, layout: String)
+    suspend fun setTriggerDescription(context: String, payload: SetTriggerDescriptionPayload)
 
 }
