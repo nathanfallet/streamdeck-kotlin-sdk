@@ -20,8 +20,8 @@ kotlin {
     macosArm64()
     linuxX64()
     //mingwX64() // Not supported by CIO?
+    jvmToolchain(21)
     jvm {
-        jvmToolchain(19)
         withJava()
         testRuns.named("test") {
             executionTask.configure {
@@ -34,19 +34,19 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-                implementation("io.ktor:ktor-client-cio:2.3.9")
-                implementation("io.ktor:ktor-client-websockets:2.3.9")
+                implementation("io.ktor:ktor-client-cio:2.3.11")
+                implementation("io.ktor:ktor-client-websockets:2.3.11")
 
-                api("me.nathanfallet.usecases:usecases:1.6.0")
+                api("me.nathanfallet.usecases:usecases:1.6.1")
                 api("com.github.ajalt.clikt:clikt:4.3.0")
             }
         }
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation("io.mockk:mockk:1.13.8")
+                implementation("io.mockk:mockk:1.13.11")
             }
         }
     }
