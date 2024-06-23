@@ -10,7 +10,6 @@ plugins {
 }
 
 rootProject.name = "streamdeck-kotlin-sdk"
-includeBuild("convention-plugins")
 includeBuild("streamdeck-gradle-plugin")
 include(":streamdeck-kotlin-sdk")
 

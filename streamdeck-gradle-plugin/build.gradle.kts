@@ -8,7 +8,7 @@ repositories {
 }
 
 group = "me.nathanfallet.streamdeck"
-version = "1.1.2"
+version = "1.2.0"
 
 gradlePlugin {
     website = "https://github.com/nathanfallet/streamdeck-kotlin-sdk"
