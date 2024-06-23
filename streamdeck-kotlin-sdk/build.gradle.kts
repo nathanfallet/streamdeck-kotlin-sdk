@@ -7,6 +7,8 @@ plugins {
 }
 
 mavenPublishing {
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
     pom {
         name.set("streamdeck-kotlin-sdk")
         description.set("A Kotlin SDK to create Stream Deck plugins.")
